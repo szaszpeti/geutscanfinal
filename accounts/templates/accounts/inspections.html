@@ -1,0 +1,33 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Inspections</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Location</th>
+							<th>WTG localNR</th>
+							<th>Price</th>
+						</tr>
+						
+						{% for i in inspections %}
+						<tr>
+						<td>{{i.location}}</td>
+						<td>{{i.wtglocalnumber}}</td>
+						<td>{{i.wtgnumber}}</td>
+        				</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+{% endblock content %}

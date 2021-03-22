@@ -1,0 +1,100 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+		<br>
+
+		<div class="row">
+			<div class="col-md-5">
+				<div class="card card-body">
+					<h6>Inspection details for:</h6>
+				</div>
+				<div class="card card-body">
+					<table class="table table-danger">
+						<tr>
+							<th>Location</th>
+							<th>WTG</th>
+							<th>GE Number</th>
+						</tr>
+						
+						
+						<tr>
+						<td>{{inspection.location}}</td>
+						<td>{{inspection.wtglocalnumber}}</td>
+						<td>{{inspection.wtgnumber}}</td>
+        				</tr>
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Activity during Inspection</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table-red">
+						<tr>
+							<th>Activity</th>
+							<th>Start</th>
+							<th>End</th>
+							<th>Notes</th>
+						</tr>
+				
+
+						<tr>
+						<td>{{inspection.activity_1}}</td>
+						<td>{{inspection.time_start_1}}</td>
+						<td>{{inspection.time_end_1}}</td>
+						<td>{{inspection.note_1}}</td>
+        				</tr>
+
+        				
+						<tr>
+						<td>{{inspection.activity_2}}</td>
+						<td>{{inspection.time_start_2}}</td>
+						<td>{{inspection.time_end_2}}</td>
+						<td>{{inspection.note_2}}</td>
+        				</tr>
+        				<tr>
+						<td>{{inspection.activity_3}}</td>
+						<td>{{inspection.time_start_3}}</td>
+						<td>{{inspection.time_end_3}}</td>
+						<td>{{inspection.note_3}}</td>
+        				</tr>
+        				<tr>
+						<td>{{inspection.activity_4}}</td>
+						<td>{{inspection.time_start_4}}</td>
+						<td>{{inspection.time_end_4}}</td>
+						<td>{{inspection.note_4}}</td>
+        				</tr>
+        				<tr>
+						<td>{{inspection.activity_5}}</td>
+						<td>{{inspection.time_start_5}}</td>
+						<td>{{inspection.time_end_5}}</td>
+						<td>{{inspection.note_5}}</td>
+        				</tr>
+        				<tr>
+						<td>{{inspection.activity_6}}</td>
+						<td>{{inspection.time_start_6}}</td>
+						<td>{{inspection.time_end_6}}</td>
+						<td>{{inspection.note_6}}</td>
+        				</tr>
+
+
+
+
+					</table>
+
+					<img class="profile-pic" src="" >
+				</div>
+			</div>
+			
+		</div>
+
+{% endblock content %}

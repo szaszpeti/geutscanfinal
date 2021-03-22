@@ -1,0 +1,87 @@
+{%  extends 'accounts/main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h1>Technichian</h1>
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Technichian:</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'account' %}">Update Technichian</a>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'create_inspection' %}">Create Inspection</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{technichian.email}}</p>
+			<p>Phone: {{technichian.phone}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Orders</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px"></h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col-md-4">
+		<div class="card card-body">
+
+			<form method="get">
+				{{myFilter.form|crispy}}
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+				<tr>
+					<th>Location</th>
+					<th>WTG Local</th>
+					<th>WTG Number</th>
+					<th>Date</th>
+					
+				</tr>
+				</tr>
+
+				{% for inspection in inspections %}
+					<tr>
+    					<td>{{inspection.location}}</td>
+    					<td>{{inspection.wtglocalnumber}}</td>
+    					<td>{{inspection.wtgnumber}}</td>
+    					<td>{{inspection.date}}</td>
+    					<td><a class="btn btn-sm btn-primary" href="{% url 'inspection_detail' inspection.id %}">View</a></td>
+    					<td><a class="btn btn-sm btn-info" href="{% url 'update_inspection' inspection.id %}">Update</a></td>
+    					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_inspection' inspection.id %}">Delete</a></td>
+    					
+					</tr>
+					{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
