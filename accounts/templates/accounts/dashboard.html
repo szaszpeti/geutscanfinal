@@ -1,5 +1,6 @@
 {%  extends 'accounts/main.html' %}
 
+{% load crispy_forms_tags %}
 {% block content %}
 
 
@@ -31,12 +32,27 @@
 		</div>
 	</div>
 </div>
+<br><br>
+<div class="row">
+	<div class="col-md-12">
+		<div class="card card-body">
 
+			<form method="get">
+				{{myFilter.form}}
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+
+		</div>
+	</div>
+	
+</div>
+<br><br>
 <div class="row">	
 	<div class="col-md-12">
 
-		<h5>LAST 5 Inspections</h5>
-		<hr>
+
+	
 		<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_inspection' %}">Create New Inspection</a>
 		<div class="card card-body">
 

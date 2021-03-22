@@ -69,9 +69,11 @@ def home(request):
     total_inspections = inspections.count()
     # delivered = orders.filter(status='Delivered').count()
     # pending = orders.filter(status='Pending').count()
+    myFilter = InspectionFilter(request.GET, queryset=inspections)
+    inspections = myFilter.qs 
 
     context = {'inspections':inspections, 'technicians':technicians,
-    'total_inspections':total_inspections}
+    'total_inspections':total_inspections, 'myFilter':myFilter}
 
     return render(request, 'accounts/dashboard.html', context)
 
@@ -129,6 +131,8 @@ def technician(request, pk_test):
 @login_required(login_url='login')
 def detailInspection(request, pk):
     inspection = Inspection.objects.get(id=pk)
+
+
 
     context = {'inspection':inspection}
 
