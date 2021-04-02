@@ -9,16 +9,16 @@
 
 <div class="row">
 	<div class="col-md-5">
-		
+
 		<hr>
 		<div class="card card-body">
-		
+
 			<table class="table table-sm">
 				<tr>
     				<th></th>
 					<th>Technician</th>
 					<th>Phone</th>
-					
+
 					{% for technician in technicians %}
 					<tr>
     					<td><a class="btn btn-sm btn-info" href="{% url 'technician' technician.id %}">View</a></td>
@@ -45,15 +45,16 @@
 
 		</div>
 	</div>
-	
+
 </div>
 <br><br>
-<div class="row">	
+<div class="row">
 	<div class="col-md-12">
 
 
-	
-		<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_inspection' %}">Create New Inspection</a>
+	    <div class="card card-body">
+		<a class="btn btn-danger  btn-lg btn-block" href="{% url 'create_inspection' %}">Create New Inspection</a>
+		</div>
 		<div class="card card-body">
 
 			<table class="table table-sm">
@@ -62,27 +63,26 @@
 					<th>Local Nr.</th>
 					<th>GE Number</th>
 					<th>Technician</th>
-					
-					
+
 				</tr>
-				
+
 				{% for inspection in inspections %}
 					<tr>
     					<td>{{inspection.location}}</td>
     					<td>{{inspection.wtglocalnumber}}</td>
     					<td>{{inspection.wtgnumber}}</td>
     					<td>{{inspection.technician_one}}</td>
-    					
+
     					<td><a class="btn btn-sm btn-primary" href="{% url 'inspection_detail' inspection.id %}">View</a></td>
-    					<td><a class="btn btn-sm btn-primary" href="{% url 'pandas_detail' inspection.id %}">Pandas</a></td>
+
     					<td><a class="btn btn-sm btn-info" href="{% url 'update_inspection' inspection.id %}">Update</a></td>
     					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_inspection' inspection.id %}">Delete</a></td>
-    					
+
 					</tr>
 					{% endfor %}
-				
-				
-		
+
+
+
 			</table>
 		</div>
 	</div>

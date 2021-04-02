@@ -17,25 +17,29 @@
 							<th>Location</th>
 							<th>WTG</th>
 							<th>GE Number</th>
+							<th>Hours worked</th>
 						</tr>
-						
-						
+
+
 						<tr>
 						<td>{{inspection.location}}</td>
 						<td>{{inspection.wtglocalnumber}}</td>
 						<td>{{inspection.wtgnumber}}</td>
+						<td>{{hours}}</td>
         				</tr>
-						
+
 					</table>
 				</div>
 			</div>
-			
+
+
+
 		</div>
 
 		<div class="row">
 			<div class="col-md">
 				<div class="card card-body">
-					<h5>Activity during Inspection</h5>
+					<h5>Activities during Inspection</h5>
 				</div>
 				<div class="card card-body">
 					<table class="table-red">
@@ -44,17 +48,19 @@
 							<th>Start</th>
 							<th>End</th>
 							<th>Notes</th>
+							<th>Hours worked</th>
 						</tr>
-				
+
 
 						<tr>
 						<td>{{inspection.activity_1}}</td>
 						<td>{{inspection.time_start_1}}</td>
 						<td>{{inspection.time_end_1}}</td>
 						<td>{{inspection.note_1}}</td>
+
         				</tr>
 
-        				
+
 						<tr>
 						<td>{{inspection.activity_2}}</td>
 						<td>{{inspection.time_start_2}}</td>
@@ -91,10 +97,79 @@
 
 					</table>
 
-					<img class="profile-pic" src="" >
+					<hr>
+<div class="row">
+			<div class="col-md-3">
+				<div class="card card-body">
+						<td><a class="btn btn-sm btn-primary" href="{% url 'addphoto' inspection.id %}">Add Photo</a></td>
+
+
+				</div>
+
+				<div class="card card-body">
+						<td><a class="btn btn-sm btn-primary" href="{% url 'inspection_pdf' inspection.id %}">Create Report</a></td>
+
+
+
 				</div>
 			</div>
-			
+
 		</div>
+
+				<div class="col-md-3">
+
+			</div>
+
+		</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card card-body">
+					<hr>
+					<h6>Images:</h6>
+					<hr>
+
+<!--Carousel Wrapper-->
+<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+    {% for p in photos %}
+      <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+    {% endfor %}
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+      {% for p in photos %}
+      <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+        <img class="d-block w-75" src="{{p.images.url}}"
+          alt="First slide">
+      </div>
+      {% endfor %}
+      <!--/First slide-->
+    <!--/.Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div>
+ </div>
+  </div>
+   </div>
+
+
+
 
 {% endblock content %}

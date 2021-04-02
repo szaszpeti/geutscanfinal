@@ -4,6 +4,14 @@ from django.contrib.auth.models import User
 from django import forms
 
 from .models import *
+from pyuploadcare.dj.forms import ImageField
+
+class PostForm(forms.ModelForm):
+    photo = ImageField(label='')
+
+    class Meta:
+        model = Post
+        fields = ('photo',)
 
 
 class TechnicianForm(ModelForm):
@@ -13,9 +21,11 @@ class TechnicianForm(ModelForm):
 		exclude = ['user']
 
 class InspectionForm(ModelForm):
-	class Meta:
-		model = Inspection
-		fields = '__all__'
+    photo = ImageField(label='')
+
+    class Meta:
+        model = Inspection
+        fields = '__all__'
 
 class CreateUserForm(UserCreationForm):
 	class Meta:

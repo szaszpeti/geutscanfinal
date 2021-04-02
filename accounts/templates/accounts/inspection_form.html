@@ -3,6 +3,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
+{{form.media}}
 
 <div class="row">
     <div class="col-md-12">
@@ -11,123 +12,8 @@
 
             <form action="" method="POST">
                 {% csrf_token %}
-     <div class="row">
-            <div class="col-4">
-          {{form.location|as_crispy_field}}
-              </div>
-               <div class="col-4">
-          {{form.wtglocalnumber|as_crispy_field}}
-              </div>
-              <div class="col-4">
-          {{form.wtgnumber|as_crispy_field}}
-               </div>
-            </div>
-            
-             <div class="row">
-              <div class="col-4">
-          {{form.technician_one|as_crispy_field}}
-              </div>
-              <div class="col-4">
-         {{form.technician_two|as_crispy_field}}
-               </div>
-               <div class="col-4">
-         {{form.technician_three|as_crispy_field}}
-               </div>
+     {{form|crispy}}
 
-
-                </br>   </br>   </br>
-          <div class="row">
-              <div class="col-4">
-          {{form.activity_1|as_crispy_field}}
-              </div>
-              <div class="col-2">
-          {{form.time_start_1|as_crispy_field}}
-               </div>
-               <div class="col-2">
-          {{form.time_end_1|as_crispy_field}}
-               </div>
-               <div class="col-4">
-          {{form.note_1|as_crispy_field}}
-               </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-4">
-          {{form.activity_2|as_crispy_field}}
-              </div>
-              <div class="col-2">
-          {{form.time_start_2|as_crispy_field}}
-               </div>
-               <div class="col-2">
-          {{form.time_end_2|as_crispy_field}}
-               </div>
-               <div class="col-4">
-          {{form.note_2|as_crispy_field}}
-               </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-4">
-          {{form.activity_3|as_crispy_field}}
-              </div>
-              <div class="col-2">
-          {{form.time_start_3|as_crispy_field}}
-               </div>
-               <div class="col-2">
-          {{form.time_end_3|as_crispy_field}}
-               </div>
-               <div class="col-4">
-          {{form.note_3|as_crispy_field}}
-               </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-4">
-          {{form.activity_4|as_crispy_field}}
-              </div>
-              <div class="col-2">
-          {{form.time_start_4|as_crispy_field}}
-               </div>
-               <div class="col-2">
-          {{form.time_end_4|as_crispy_field}}
-               </div>
-               <div class="col-4">
-          {{form.note_4|as_crispy_field}}
-               </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-4">
-          {{form.activity_5|as_crispy_field}}
-              </div>
-              <div class="col-2">
-          {{form.time_start_5|as_crispy_field}}
-               </div>
-               <div class="col-2">
-          {{form.time_end_5|as_crispy_field}}
-               </div>
-               <div class="col-4">
-          {{form.note_5|as_crispy_field}}
-               </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-4">
-          {{form.activity_6|as_crispy_field}}
-              </div>
-              <div class="col-2">
-          {{form.time_start_6|as_crispy_field}}
-               </div>
-               <div class="col-2">
-          {{form.time_end_6|as_crispy_field}}
-               </div>
-               <div class="col-4">
-          {{form.note_6|as_crispy_field}}
-               </div>
-            </div>
-                    
-               
-                
                 <input type="submit" name="Submit">
             </form>
 

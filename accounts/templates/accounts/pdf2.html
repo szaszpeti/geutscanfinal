@@ -1,0 +1,104 @@
+
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<div class="row">
+			<div class="col-md-4">
+			    	<div class="card card-body">
+
+                    <img src="{% static 'images/logo.png' %}"/>
+</div>
+</div>
+</div>
+
+<hr>
+<h1>GE UT Inspection Timesheet for:</h1>
+<hr>
+<h2>{{inspection}}</h2>
+
+ <img src="{% static 'images/mistras.jpg' %}">
+
+<br>
+
+<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Activities during Inspection</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table-red">
+						<tr>
+							<th>Activity</th>
+							<th>Start</th>
+							<th>End</th>
+							<th>Notes</th>
+						</tr>
+
+
+						<tr>
+						<td>{{inspection.activity_1}}</td>
+						<td>{{inspection.time_start_1}}</td>
+						<td>{{inspection.time_end_1}}</td>
+						<td>{{inspection.note_1}}</td>
+        				</tr>
+
+
+						<tr>
+						<td>{{inspection.activity_2}}</td>
+						<td>{{inspection.time_start_2}}</td>
+						<td>{{inspection.time_end_2}}</td>
+						<td>{{inspection.note_2}}</td>
+        				</tr>
+        				<tr>
+						<td>{{inspection.activity_3}}</td>
+						<td>{{inspection.time_start_3}}</td>
+						<td>{{inspection.time_end_3}}</td>
+						<td>{{inspection.note_3}}</td>
+        				</tr>
+        				<tr>
+						<td>{{inspection.activity_4}}</td>
+						<td>{{inspection.time_start_4}}</td>
+						<td>{{inspection.time_end_4}}</td>
+						<td>{{inspection.note_4}}</td>
+        				</tr>
+        				<tr>
+						<td>{{inspection.activity_5}}</td>
+						<td>{{inspection.time_start_5}}</td>
+						<td>{{inspection.time_end_5}}</td>
+						<td>{{inspection.note_5}}</td>
+        				</tr>
+        				<tr>
+						<td>{{inspection.activity_6}}</td>
+						<td>{{inspection.time_start_6}}</td>
+						<td>{{inspection.time_end_6}}</td>
+						<td>{{inspection.note_6}}</td>
+        				</tr>
+
+
+
+					</table>
+<hr>
+{% for p in photos %}
+<div class="row">
+			<div class="col-md-4">
+				<div class="card card-body">
+                    <img src="{{p.images.path}}" height=300px>
+</div>
+</div>
+</div>
+{% endfor %}
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
+
+

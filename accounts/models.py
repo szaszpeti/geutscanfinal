@@ -1,8 +1,12 @@
 from django.db import models
-
+import sys
 # Create your models here.
 from django.db import models
 from django.contrib.auth.models import User
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from pyuploadcare.dj.models import ImageField
 
 # Create your models here.
 
@@ -19,7 +23,7 @@ class Technician(models.Model):
 
 
 class Inspection(models.Model):
-    
+
 	date = models.DateTimeField(auto_now_add=True)
 	location = models.CharField(max_length=50)
 	wtglocalnumber = models.CharField(max_length=3)
@@ -54,7 +58,7 @@ class Inspection(models.Model):
 				(CLEANING, 'Cleaning'),
 				(OTHER, 'Other'),
 				]
-	
+
 	activity_1 = models.CharField(choices=ACTIVITY, max_length=50)
 	time_start_1 = models.TimeField(null=True,blank=True, auto_now=False, auto_now_add=False)
 	time_end_1 = models.TimeField(null=True,blank=True, auto_now=False, auto_now_add=False)
@@ -85,10 +89,37 @@ class Inspection(models.Model):
 	time_end_6 = models.TimeField(null=True,blank=True, auto_now=False, auto_now_add=False)
 	note_6 = models.CharField(max_length=200,blank=True)
 
+	photo = ImageField(blank=True, manual_crop="")
+
 	def __str__(self):
 		return f'{self.location + " - " + self.wtgnumber}'
 
 
+
+class InspectionImage(models.Model):
+    inspection = models.ForeignKey(Inspection, default=None, on_delete=models.CASCADE)
+    images = models.FileField(upload_to = 'images/')
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.images = self.compressImage(self.images)
+        super(InspectionImage, self).save(*args, **kwargs)
+
+    def compressImage(self,images):
+        imageTemproary = Image.open(images)
+        outputIoStream = BytesIO()
+        #imageTemproaryResized = imageTemproary.resize( (1020,573) )
+        imageTemproary.save(outputIoStream , format='JPEG', quality=60)
+        outputIoStream.seek(0)
+        images = InMemoryUploadedFile(outputIoStream,'ImageField', "%s.jpg" % images.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+        return images
+
+
+    def __str__(self):
+        return self.inspection.wtgnumber
+
+class Post(models.Model):
+    photo = ImageField(blank=True, manual_crop="")
 # class Tag(models.Model):
 #     name = models.CharField(max_length=200, null=True)
 
@@ -99,7 +130,7 @@ class Inspection(models.Model):
 #     CATEGORY = (
 #             ('Indoor', 'Indoor'),
 #             ('Out Door', 'Out Door'),
-#             ) 
+#             )
 
 #     name = models.CharField(max_length=200, null=True)
 #     price = models.FloatField(null=True)
